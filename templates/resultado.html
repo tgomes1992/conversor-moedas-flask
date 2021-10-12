@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+
+{% block content %}
+    
+<div>
+    
+    <ul class='result_list' id="results">
+
+        <li> Moeda de origem: BRL </li>
+        <li> Moeda de destino: {{resposta['destino']}} </li>
+        <li> Valor para conversão: {{resposta['valor']}}  </li>
+        <li> Forma de pagamento: {{resposta['pagamento']}} </li>
+        <li> Valor da "Moeda de destino" usado para conversão: {{resposta['taxa_compra']}} </li>
+        <li> Valor comprado em "Moeda de destino":  {{resposta['valor_conversão']}}   </li>
+        <li> Taxa de pagamento:   {{resposta['taxapagto']}} </li>
+        <li> Taxa de conversão: {{resposta['taxaconversao']}} </li>
+        <li> Valor utilizado para conversão descontando as taxas: {{resposta['conversao-taxas']}} </li>
+
+    </ul>
+        
+
+</div>
+
+{% endblock %}

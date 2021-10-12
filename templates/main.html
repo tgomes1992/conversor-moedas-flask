@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+</head>
+
+
+
+<body>
+
+    <h1>Conversor de Moedas</h1>
+
+
+    <form method="post" action="get_api" id='consultar'>
+
+        <input  id="origem" type="text" value="BRL" name="origem" disabled>
+
+        <select id="destino" name="destino">
+            <option value="USD">Dólar Americano</option>
+            <option value="EUR">Euro</option>
+        </select>
+
+        <input id="conversao" type="number" name="conversao" step=0.01 min=1000 max=100000> 
+
+        <select id="tipoPagamento"  name="tipoPagamento">
+            <option value="Boleto">Boleto</option>
+            <option value="Cartao">Cartão de Crédito</option>
+        </select>
+
+        <input type="submit" value="Consultar">
+
+    </form>
+
+    {% block content %}
+
+    {% endblock %}
+
+
+</body>
+
+<script src="/static/app.js"></script>
+
+</html>
