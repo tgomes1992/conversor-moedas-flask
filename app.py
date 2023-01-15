@@ -22,5 +22,6 @@ def get_result():
     return render_template('resultado.html',resposta=consulta)
 
 
-
+if __name__ == "__main__":
+    app.run()
 
