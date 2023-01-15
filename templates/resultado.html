@@ -1,11 +1,10 @@
 {% extends "main.html" %}
 
 {% block content %}
-    
-<div>
-    
+{% if resposta['destino'] == "" %}
+<div class="hidden">
+{% endif %}
     <ul class='result_list' id="results">
-
         <li> Moeda de origem: BRL </li>
         <li> Moeda de destino: {{resposta['destino']}} </li>
         <li> Valor para conversão: {{resposta['valor']}}  </li>
@@ -15,10 +14,8 @@
         <li> Taxa de pagamento:   {{resposta['taxapagto']}} </li>
         <li> Taxa de conversão: {{resposta['taxaconversao']}} </li>
         <li> Valor utilizado para conversão descontando as taxas: {{resposta['conversao-taxas']}} </li>
-
     </ul>
-        
-
 </div>
+
 
 {% endblock %}

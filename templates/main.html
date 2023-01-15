@@ -4,6 +4,9 @@
 
 <head>
 
+    <link rel="stylesheet" type="text/css" href="/static/app.css"  />
+
+
 </head>
 
 
@@ -13,7 +16,7 @@
     <h1>Conversor de Moedas</h1>
 
 
-    <form method="post" action="get_api" id='consultar'>
+    <form method="post" action="#" id='consultar'>
 
         <input  id="origem" type="text" value="BRL" name="origem" disabled>
 
@@ -32,6 +35,24 @@
         <input type="submit" value="Consultar">
 
     </form>
+
+
+{% if resposta['destino'] == "" %}
+<div class="hidden">
+{% endif %}
+    <ul class='result_list' id="results">
+        <li> Moeda de origem: BRL </li>
+        <li> Moeda de destino: {{resposta['destino']}} </li>
+        <li> Valor para conversão: {{resposta['valor']}}  </li>
+        <li> Forma de pagamento: {{resposta['pagamento']}} </li>
+        <li> Valor da "Moeda de destino" usado para conversão: {{resposta['taxa_compra']}} </li>
+        <li> Valor comprado em "Moeda de destino":  {{resposta['valor_conversão']}}   </li>
+        <li> Taxa de pagamento:   {{resposta['taxapagto']}} </li>
+        <li> Taxa de conversão: {{resposta['taxaconversao']}} </li>
+        <li> Valor utilizado para conversão descontando as taxas: {{resposta['conversao-taxas']}} </li>
+    </ul>
+</div>
+
 
     {% block content %}
 
