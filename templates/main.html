@@ -6,53 +6,67 @@
 
     <link rel="stylesheet" type="text/css" href="/static/app.css"  />
 
+    <link rel="stylesheet" type="text/css" href="/static/materialize/css/materialize.css" />
+
+    <script src="/static/materialize/js/materialize.js"></script>
+    
+    <script src="/static/materialize_init.js"></script>
 
 </head>
-
-
-
 <body>
+    <nav></nav>
+    <div class="container">
+        <h1>Conversor de Moedas</h1>
+        <form class="col s8" method="post" action="#" id='consultar'>
+    
+            <div class="input-field col s4 ">          
+                <select id="destino"  name="destino" required>
+                    <option value="" disabled selected>Escolha a sua moeda</option>
+                    <option value="USD">Dólar Americano</option>
+                    <option value="EUR">Euro</option>
+                </select>
+                <label>Escolha a sua Moeda</label>
+            </div>
+            
+            
+            <div class="input-field col s4 ">          
+                <select id="tipoPagamento"  name="tipoPagamento">
+                    <option value="" disabled  required selected>Selecione o método de Pagamento</option>
+                    <option value="Cartao">Cartão de Crédito</option>
+                    <option value="Boleto">Boleto</option>
+                </select>
+                <label>Escolha a sua Moeda</label>
+            </div>
 
-    <h1>Conversor de Moedas</h1>
+            <div class="input-field" >
+                <input id="conversao" required type="number" name="conversao" step=0.01 min=1000 max=100000 />      
+            </div>
 
+            <input type="submit" class="btn" value="Consultar">
+    
+        </form>
+    
+    
+    {% if resposta['destino'] == "" %}
+    <div class="hidden">
+    {% endif %}
+        <ul class='result_list collection' id="results">
+            <li class="collection-item"> Moeda de origem: BRL </li>
+            <li class="collection-item"> Moeda de destino: {{resposta['destino']}} </li>
+            <li class="collection-item"> Valor para conversão: {{resposta['valor']}}  </li>
+            <li class="collection-item"> Forma de pagamento: {{resposta['pagamento']}} </li>
+            <li class="collection-item"> Valor da "Moeda de destino" usado para conversão: {{resposta['taxa_compra']}} </li>
+            <li class="collection-item"> Valor comprado em "Moeda de destino":  {{resposta['valor_conversão']}}   </li>
+            <li class="collection-item"> Taxa de pagamento:   {{resposta['taxapagto']}} </li>
+            <li class="collection-item"> Taxa de conversão: {{resposta['taxaconversao']}} </li>
+            <li class="collection-item"> Valor utilizado para conversão descontando as taxas: {{resposta['conversao-taxas']}} </li>
+        </ul>
+    </div>
+    
 
-    <form method="post" action="#" id='consultar'>
+    </div>
 
-        <input  id="origem" type="text" value="BRL" name="origem" disabled>
-
-        <select id="destino" name="destino">
-            <option value="USD">Dólar Americano</option>
-            <option value="EUR">Euro</option>
-        </select>
-
-        <input id="conversao" type="number" name="conversao" step=0.01 min=1000 max=100000> 
-
-        <select id="tipoPagamento"  name="tipoPagamento">
-            <option value="Boleto">Boleto</option>
-            <option value="Cartao">Cartão de Crédito</option>
-        </select>
-
-        <input type="submit" value="Consultar">
-
-    </form>
-
-
-{% if resposta['destino'] == "" %}
-<div class="hidden">
-{% endif %}
-    <ul class='result_list' id="results">
-        <li> Moeda de origem: BRL </li>
-        <li> Moeda de destino: {{resposta['destino']}} </li>
-        <li> Valor para conversão: {{resposta['valor']}}  </li>
-        <li> Forma de pagamento: {{resposta['pagamento']}} </li>
-        <li> Valor da "Moeda de destino" usado para conversão: {{resposta['taxa_compra']}} </li>
-        <li> Valor comprado em "Moeda de destino":  {{resposta['valor_conversão']}}   </li>
-        <li> Taxa de pagamento:   {{resposta['taxapagto']}} </li>
-        <li> Taxa de conversão: {{resposta['taxaconversao']}} </li>
-        <li> Valor utilizado para conversão descontando as taxas: {{resposta['conversao-taxas']}} </li>
-    </ul>
-</div>
-
+    
 
     {% block content %}
 

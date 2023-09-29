@@ -11,9 +11,11 @@ class ConversorApi:
 
 
     def taxaconversao(self,valor):
+        
         if float(valor) <= 3000 :
             return float(valor) * 0.02
         elif float(valor)>3000 :
+            print (float(valor) * 0.01)
             return float(valor) * 0.01
 
     def empty_dict(self):
